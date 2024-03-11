@@ -6,7 +6,7 @@ const expressHandlebars = require('express-handlebars').create({ /* your configu
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
-const User = require('./models/user'); // Create this model for user authentication
+const User = require('./models/User'); // Create this model for user authentication
 
 const app = express();
 

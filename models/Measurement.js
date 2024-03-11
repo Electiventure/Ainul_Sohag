@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 
 // Define the 'Measurement' schema
 const measurementSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
   place: {
     type: String,
     required: true,
@@ -26,8 +31,7 @@ const measurementSchema = new mongoose.Schema({
   },
 });
 
-// Create the 'Measurement' model based on the schema
+
 const Measurement = mongoose.model('Measurement', measurementSchema);
 
-// Export the 'Measurement' model for use in other parts of the application
 module.exports = Measurement;

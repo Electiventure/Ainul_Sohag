@@ -15,8 +15,6 @@ require('dotenv').config();
 
 // MongoDB connection
 require("./config/mongoose");
-// MongoDB connection 
-//mongoose.connect('mongodb+srv://shohag:shohag@cluster5.syckdvi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster5');
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));

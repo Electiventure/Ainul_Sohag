@@ -1,12 +1,13 @@
 // app.js
 const express = require('express');
-const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const expressHandlebars = require('express-handlebars').create({ /* your configuration options here */ });
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
-const User = require('./models/User'); // Create this model for user authentication
+const bodyParser = require('body-parser');
+const routes = require('./routes/index');
+const User = require('./models/User'); 
 
 const app = express();
 
@@ -18,24 +19,23 @@ require("./config/mongoose");
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
 
 // Method Override Middleware
 app.use(methodOverride('_method'));
 
-// Handlebars setup
-app.engine('handlebars', expressHandlebars.engine);
-app.set('view engine', 'handlebars');
+// Set up passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
-// Passport Configuration
+// Passport local strategy
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Include the 'Measurement' model
-const Measurement = require('./models/measurement'); // 
+// Handlebars setup
+app.engine('handlebars', expressHandlebars.engine);
+app.set('view engine', 'handlebars');
 
 // Routes setup (to be implemented later)
 const indexRoutes = require('./routes/index');
@@ -43,6 +43,23 @@ app.use('/', indexRoutes);
 
 //Express Static Middleware
 app.use(express.static('public'));
+
+// Set up body parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Set up routes
+app.use('/', routes);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
+
+// Use the routes
+const indexRouter = require('./routes/index');
+app.use('/', indexRouter);
 
 // Server setup
 const PORT = process.env.PORT || 3000;

@@ -23,14 +23,14 @@
                 <ul class="navbar-nav">
                     {{#if user}}
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/measurements/new">Add Measurement</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/measurements/show">View Measurements</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/measurements/index">List of Measurements</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/measurements/edit">Update Measurement</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/api/measurements/new">Add Measurement</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/api/measurements/show">View Measurements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/api/measurements/index">List of Measurements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/api/measurements/edit">Update Measurement</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
                     {{else}}
-                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/user/login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/user/register">Register</a></li>
                     {{/if}}
                 </ul>
             </div>

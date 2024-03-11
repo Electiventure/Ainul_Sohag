@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Measurement</title>
+</head>
+
+<body>
+  <h1>New Measurement</h1>
+
+  <form action="/things" method="POST">
+    <label for="place">Place:</label>
+    <input type="text" id="place" name="thing[place]" required>
+
+    <label for="date">Date:</label>
+    <input type="text" id="date" name="thing[date]" required>
+
+    <label for="value">Value:</label>
+    <input type="number" id="value" name="thing[value]" step="0.1" required>
+
+    <label for="type">Type:</label>
+    <input type="text" id="type" name="thing[type]" required>
+
+    <button type="submit">Add Measurement</button>
+  </form>
+</body>
+
+</html>

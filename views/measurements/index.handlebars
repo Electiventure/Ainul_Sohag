@@ -10,14 +10,14 @@
 <body>
   <h1>List of Measurements</h1>
 
-  {{#if things.length}}
+  {{#if measurements.length}}
     <ul>
-      {{#each things}}
+      {{#each measurements}}
         <li>
           <strong>{{place}}</strong> - {{date}} - {{value}} - {{type}}
-          <a href="/things/{{_id}}">View</a>
-          <a href="/things/{{_id}}/edit">Edit</a>
-          <form action="/things/{{_id}}?_method=DELETE" method="POST">
+          <a href="/measurements/{{_id}}">View</a>
+          <a href="/measurements/{{_id}}/edit">Edit</a>
+          <form action="/measurements/{{_id}}?_method=DELETE" method="POST">
             <!-- Include CSRF token if applicable -->
             <input type="hidden" name="_csrf" value="{{csrfToken}}">
             <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>

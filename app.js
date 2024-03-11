@@ -6,7 +6,7 @@ const expressHandlebars = require('express-handlebars').create({ /* your configu
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
-const User = require('./models/user'); // Create this model for user authentication
+const User = require('./models/User'); // Create this model for user authentication
 
 const app = express();
 
@@ -34,8 +34,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Include the 'Thing' model
-const Thing = require('./models/thing'); // Corrected lowercase 'thing' here
+// Include the 'Measurement' model
+const Measurement = require('./models/measurement'); // 
 
 // Routes setup (to be implemented later)
 const indexRoutes = require('./routes/index');

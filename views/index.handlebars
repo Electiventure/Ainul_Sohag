@@ -1,4 +1,4 @@
-<!-- views/things/index.handlebars -->
+<!-- views/measurements/index.handlebars -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +8,13 @@
 </head>
 <body>
     <h1>List of Measurements</h1>
-    {{#if things.length}}
+    {{#if measurements.length}}
         <ul>
-            {{#each things}}
+            {{#each measurements}}
                 <li>
                     <strong>{{this.place}}</strong> - {{this.date}} - {{this.value}} - {{this.type}}
-                    <a href="/things/{{this._id}}">View</a>
-                    <a href="/things">View Measurements</a>
+                    <a href="/measurements/{{this._id}}">View</a>
+                    <a href="/measurements">View Measurements</a>
                 </li>
             {{/each}}
         </ul>

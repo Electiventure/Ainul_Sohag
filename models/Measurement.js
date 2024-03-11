@@ -1,8 +1,8 @@
-// models/thing.js
+// models\Measurement.js
 const mongoose = require('mongoose');
 
-// Define the 'Thing' schema
-const thingSchema = new mongoose.Schema({
+// Define the 'Measurement' schema
+const measurementSchema = new mongoose.Schema({
   place: {
     type: String,
     required: true,
@@ -26,8 +26,8 @@ const thingSchema = new mongoose.Schema({
   },
 });
 
-// Create the 'Thing' model based on the schema
-const Thing = mongoose.model('Thing', thingSchema);
+// Create the 'Measurement' model based on the schema
+const Measurement = mongoose.model('Measurement', measurementSchema);
 
-// Export the 'Thing' model for use in other parts of the application
-module.exports = Thing;
+// Export the 'Measurement' model for use in other parts of the application
+module.exports = Measurement;

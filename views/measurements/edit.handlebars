@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Measurement</title>
+</head>
+
+<body>
+  <h1>Edit Measurement</h1>
+
+  <form action="/measurements/{{measurement._id}}?_method=PUT" method="POST">
+    <label for="place">Place:</label>
+    <input type="text" id="place" name="measurement[place]" value="{{measurement.place}}" required>
+
+    <label for="date">Date:</label>
+    <input type="text" id="date" name="measurement[date]" value="{{measurement.date}}" required>
+
+    <label for="value">Value:</label>
+    <input type="number" id="value" name="measurement[value]" value="{{measurement.value}}" step="0.1" required>
+
+    <label for="type">Type:</label>
+    <input type="text" id="type" name="measurement[type]" value="{{measurement.type}}" required>
+
+    <button type="submit">Update Measurement</button>
+  </form>
+
+  <!-- Ensure measurement._id is defined before generating the link -->
+  {{#if measurement._id}}
+    <!-- Use Express's url function to construct the URL -->
+    <a href="{{url '/measurements/' measurement._id '/edit'}}">Edit Measurement</a>
+  {{else}}
+    <p>Measurement _id is not defined</p>
+  {{/if}}
+
+  <a href="/measurements/{{measurement._id}}">Cancel</a>
+</body>
+
+</html>

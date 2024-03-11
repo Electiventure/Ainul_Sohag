@@ -10,13 +10,17 @@ const User = require('./models/user'); // Create this model for user authenticat
 
 const app = express();
 
-// MongoDB connection (replace 'your-database-url' with your MongoDB URL)
-mongoose.connect('mongodb+srv://shohag:shohag@cluster5.syckdvi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster5', { useNewUrlParser: true, useUnifiedTopology: true });
-//mongoose.connect('mongodb://localhost:27017/your-database', { useNewUrlParser: true, useUnifiedTopology: true });
+// dotenv
+require('dotenv').config();
+
+// MongoDB connection
+require("./config/mongoose");
+// MongoDB connection 
+//mongoose.connect('mongodb+srv://shohag:shohag@cluster5.syckdvi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster5');
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(session({ secret: 'your-secret-key', resave: true, saveUninitialized: true }));
+app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 

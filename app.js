@@ -41,6 +41,9 @@ const Thing = require('./models/thing'); // Corrected lowercase 'thing' here
 const indexRoutes = require('./routes/index');
 app.use('/', indexRoutes);
 
+//Express Static Middleware
+app.use(express.static('public'));
+
 // Server setup
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
